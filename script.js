@@ -4,7 +4,7 @@
 // 조건 : `구현시작` 부분만 수정 할 수 있습니다.
 
 console.clear();
-var age = 60; // 이 값을 바꿔가면서 실행해보세요.
+var age = 20; // 이 값을 바꿔가면서 실행해보세요.
 
 console.log("당신의 나이는 " + age + "살 입니다.");
 
@@ -13,12 +13,8 @@ console.log("당신의 나이는 " + age + "살 입니다.");
 
 if (age <= 19) {
   console.log("할인 대상입니다.");
-}
-if (age >= 60) {
+} else if (age >= 60) {
   console.log("할인 대상입니다.");
-}
-if (age > 19) {
-  if (age > 60) {
-    console.log("할인 대상이 아닙니다.");
-  }
+} else {
+  console.log("할인 대상이 아닙니다.");
 }
