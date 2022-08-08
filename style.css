@@ -1,3 +1,4 @@
+/*-1번째----기본HTML,CSS,라이브러리-----*/
 html {
   /* 영문이면 roboto가 적용되고, 한글이면 Noto Sans KR가 적용되도록 아래와 같은 순서로 배치 */
   font-family: "Roboto", "Noto Sans KR", sans-serif;
@@ -332,6 +333,8 @@ label[for] {
 
 /* 커스텀 */
 
+/*-2번째----상단 메뉴바-----*/
+
 /* 고정형 .con 시작 */
 .con-min-width { /*최소 사이즈 */
   min-width:1080px;
@@ -345,6 +348,8 @@ label[for] {
 .top-bar { /*높이*/
   height:80px;
 }
+
+/*-3번째----상단 메뉴박스, 아이템-----*/
 
 .top-bar .menu-box-1 { /*메뉴박스 우측 벌리기*/
   margin-right:20px;
@@ -373,11 +378,15 @@ label[for] {
   border-bottom-color: black;
 }
 
+/*-4번째----상단 별도 텍스트-----*/
+
 .top-bar .btn-submit-document > span { /*우측 별도 텍스트, 배경색, 간격, 박스 둥글기*/
   background-color:#fEDE22;
   padding:10px 20px;
   border-radius:22px;
 }
+
+/*-5번째----2차 메뉴 아이템-----*/
 
 .top-bar .menu-box-1 > ul > li > div { /*2차 메뉴 아이템 박스, 가리기, 상단라인, 너비100%, 패딩, 배경색*/
   border-top:1px solid #afafaf;
@@ -406,9 +415,13 @@ label[for] {
   font-size:1.2rem;
 }
 
+/*-6번째----3차 메뉴 아이템-----*/
+
 .top-bar .menu-box-1 > ul > li > div > div > ul > li > ul > li > a {  /*3차 메뉴 아이템 텍스트, 글자색*/
   color:#444;
 }
+
+/*-7번째----메인 이미지-----*/
 
 .page-1 {  /*메인 이미지 좌우측 배경색, 높이*/
   background-color:#fEDE22;
