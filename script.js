@@ -22,14 +22,14 @@ function mode4(a, b){
     return num4;
 };
 
-let num1 = mode1(1, 2);
-console.log(num1);
+let num1 = mode1(1, 2); // 변수명은 달라도 함수명이 같아야 쓰인다
+console.log("num1 : " + num1);
 
 let num2 = mode2(3, 2);
-console.log(num2);
+console.log("num2 : " + num2);
 
 let num3 = mode3(1, 2);
-console.log(num3);
+console.log("num3 : " + num3);
 
 let num4 = mode4(1, 2);
-console.log(num4);
+console.log("num4 : " + num4);
