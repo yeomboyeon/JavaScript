@@ -1,13 +1,25 @@
-// 문제 : 매개변수와 인자에 따라 출력값 변경
-
 console.clear();
 
-function printN(start, limit){ /*매개변수*/
-    console.log("== " + "printN : " +  start +"~"+limit + " ==")
-    for(let i = start; i <= limit; i++){
-        console.log(i);       
-    }    
+// 문제 : 매번 다르게 행동하는 함수를 만들어주세요.
+let mode = 0;
+
+function hello() {
+    mode++;
+    
+    if(mode == 1){
+        console.log("안녕하세요");
+    } else if (mode == 2){
+        console.log("곤니찌와");
+    } else {
+        console.log("헬로");
+    }
 }
 
-// printN(15); 인자(여기 숫자만큼 출력)(상단에 start만 삭제하면 인자 1개로 활용)
-printN(3, 7); // 3~7
+hello();
+// 출력 => 안녕하세요.
+
+hello();
+// 출력 => 곤니짜와
+
+hello();
+// 출력 => 헬로
