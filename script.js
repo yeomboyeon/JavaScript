@@ -1,37 +1,28 @@
+// 문제 : 매개변수 2개짜리 printDan 함수를 구현해주세요.
+
 console.clear();
 
-// 문제 : 특정 언어로 인사를 여러번 하는 함수를 만들어주세요.
-
-function hello(언어, 인사횟수) {
-    var msg = "안녕하세요."; // 지역변수
+function printDan(dan, limit) {
     
-    if ( 언어 == "영어" ) {
-        msg = "hello";
-    }
-    else if ( 언어 == "일본어" ) {
-        msg = "곤니짜와";
-    }
-    for ( var i = 0; i < 인사횟수; i++ ) { // 횟수에 따라 변하도록 반복문
-        console.log(msg);
+    console.log("==" + dan + "단 출력 ==")
+    
+    for(let i = 1; i <= limit; i++){
+        console.log(dan + " * " + i + " = " + dan * i);
     }
 }
 
-hello("영어", 2);
+printDan(3, 3);
 // 출력
-// hello
-// hello
-hello("한국어", 5);
+/*
+== 3단 출력 ==
+3 * 1 = 3
+3 * 2 = 6
+3 * 3 = 9
+*/
+
+printDan(2, 1);
 // 출력
-// 안녕하세요.
-// 안녕하세요.
-// 안녕하세요.
-// 안녕하세요.
-// 안녕하세요.
-hello("일본어", 6);
-// 출력
-// 곤니짜와
-// 곤니짜와
-// 곤니짜와
-// 곤니짜와
-// 곤니짜와
-// 곤니짜와
+/*
+== 2단 출력 ==
+2 * 1 = 2
+*/
