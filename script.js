@@ -1,21 +1,21 @@
+// 함수는 자판기이다.
+// 함수에 입력값(동전과 음료수 버튼 번호)를 넣으면 반환값(음료수) 를 얻을 수 있다.
+// typeof 함수는 인자로 입력받은 값의 타입을 반환(리턴)한다.
+
 console.clear();
-// 매개변수는 자판기(함수)에서 데이터가 들어오는 구멍이다.
-var plus = function(num1, num2) {
-    // 지역변수 sum, 전역변수 sum과는 아무 관련이 없다. 동명이인이다.
-    var sum = num1 + num2;
-    
-    // return 구문은 함수(자판기)에서 데이터가 나가는 구멍이다.
-    // 함수의 호출구문은 `return` 이후의 값으로 변신한다.
-    // 즉 plus(5, 5) 가 실행하면 10으로 변신한다.
-    // 참고로 데이터는 오직 딱 1개만 리턴될 수 있다.
-    return sum;
-};
 
-// 전역변수 sum
-var sum;
+let a = 1 > 1;
+let typeOfA = typeof(a);
+console.log("typeOfA : " + typeOfA); // boolean
 
-sum = plus(2, 4); // plus(2, 4) 가 실행되면 6으로 변신한다. 결국 sum에는 6이 들어간다.
-console.log("sum : " + sum);
+let b = 1 == 1;
+let typeOfB = typeof(b);
+console.log("typeOfB : " + typeOfB); // boolean
 
-sum = plus(10, 20); // plus(10, 20) 가 실행되면 30으로 변신한다. 결국 sum에는 30이 들어간다.
-console.log("sum : " + sum);
+let c = 1 + 1;
+let typeOfC = typeof(c);
+console.log("typeOfC : " + typeOfC); // number
+
+let d = "1 + 1";
+let typeOfD = typeof(d);
+console.log("typeOfD : " + typeOfD); // string
