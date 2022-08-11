@@ -17,3 +17,7 @@ section > button {
     clear: both;
     display: block;
 }
+
+.juno > .action{
+    border: 5px solid red;
+}

@@ -1,83 +1,43 @@
-// 시작함과 동시에 경고창 표시
-$(document).ready(function(){
-    alert('html 준비끝');
-})
+// .eq() : 선택한 요소의 인덱스 번호에 해당하는 요소를 찾습니다.
+// $("선택자").eq("숫자");
 
-/**
- * 1. String 문자열 Number 숫자
- * 2. Object 객체
- * 3. Array 배열
- * 4. Function 함수
- */
-function add(a){
-    return a;
-}
-const sum = add();
-console.log(sum);
+// eq() 탐색(Traversing)
+// .eq() 메서드는 선택한 요소에 인덱스 번호에 해당하는 요소를 찾습니다.
+// .filter() 메서드는 선택된 요소에서 선택하거나 함수를 사용할 수 있습니다.
+// .first() 메서드는 선택된 요소에서 첫번째 자식 요소를 찾습니다.
+// .has() 메서드는 선택된 요소의 자식 요소에서 주어진 선택자를 찾습니다.
+// .is() 메서드는 선택된 요소 객체의 특징을 판별합니다.
+// .last() 메서드는 선택된 요소에서 마지막 번째 자식 요소를 찾습니다.
 
-/* 1. 일반 함수 선언 function () {}
-* 2. 화살표 함수 () => {}
-* 선언방식은 다르나, 호출방식은 동일
-*/
 
-/**
- * 실행 순서(1. HTML >> CSS(h1 초록) >> JS(h1 빨강))
- * ** 우선순위는 JS가 가장 높음.
- * 
- *  * JQuery 선택자
- * <기본 선택자>
- * div : 태그 선택자
- * . : 클래스 선택자
- * # : ID 선택자
- * , : 결합 선택자
- * 
- * <계층 선택자>
- * parent > child
- * 
- * <속성 선택자>
- * []
- */
+let order = 0; // order 변수 값 0으로 설정
+const lastorder = $(".juno > div").length - 1; 
+// div 박스가 움직이기 위해서는 배열에 맞춘다.
+// last 값을 인덱스값과 맞추기 위해 length -1해줘야 함
 
-const divs = $('.div-01,#div-02'); // index.html 에서 자료 가져오기
-// ''문자열로 감싼 뒤 .div-01 (클래스 불러오기), #div-02(id 불러오기)
-divs.css('background-color', 'green');
-
-const div1 = $('section > div'); // index.html 에서 자료 가져오기
-div1.css('background-color', 'red');
-
-const input = $('input[type=checkbox]'); // [] 속성별로 가져오기
-input.css('background-color', 'blue');
-
-// JQuery 이벤트 주입
-// 항상 event라는 매개변수를 받을 수 있다.
-// $('.div-01').on('click', function(){
-//      alert('안녕하세요');
-// })
-
-// $('#div-02').on('click', function(){
-//     alert('재미있다.');
-// })
-
-// $('input[type=text]').on('change', function(){
-//     console.log('와우..');
-// })
-
-// $('input[type=text]').on('keyup', function(){
-//     console.log('와우..');
-// })
-
-$('.div-01').on('click', function(){
-    $('.last').removeClass('last'); // 선택자로 가져온 엘리먼트에 클래스 삭제
-    $('.test-01').addClass('last'); // 선택자로 가져온 엘리먼트에 클래스 추가
-
-    if($('.last').hasClass('test-01')){ // 클래스를 가지고 있는지 판단
-        console.log('가지고 있다.');
-    } else {
-     console.log('가지고 있지 않다..');
+$(".kapa > button") // 버튼을 클릭시 삭제 추가되는 구현
+    .eq(0) // 인덱스 번호 0번 (eq는 선택한 요소의 인덱스 번호에 해당하는 요소를 찾는다.)
+    .click(function () {
+    if (order === 0) { // 만약 클릭하기 전에 order 값이 0이면 last 값은 동일하니 가만히 있다.
+        order = lastorder;
+    } else { // 아니라면 order 값은 1씩 감소 시킨다.(그럼 마이너스로 가는 것과 동일하게 박스는 좌로 움직인다.)
+        order--;
     }
-})
 
-$('#div-02').on('click', function(event){
-    const target = $(event.target);  // 이벤트 나 자신
-    target.css('background-color','green');
-})
+    $(".juno > div").removeClass("action"); // action 클래스를 remove 삭제 시킨다.
+    $(".juno > div").eq(order).addClass("action");  // action 클래스를 선택한 인덱스가 order 값이라면 add 추가 시킨다.
+    })
+
+$(".kapa > button")
+    .eq(1)
+    .click(function () {
+    if (order === lastorder) {
+        order = 0;
+    } else {
+        order++;
+    }
+
+    $(".juno > div").removeClass("action");
+    $(".juno > div").eq(order).addClass("action");
+    })
+// 좌, 우 버튼을 각각 누르면 박스 위치가 변경되도록 구현
