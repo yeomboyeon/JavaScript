@@ -1,27 +1,39 @@
- 'use strict'; // 자바 스크립트 시작전 맨 위에 선언을 해주고 시작(변수를 선언해주지 않고도 a= 1; 이라고 하면 선언되버리는 걸 방지해주는)
-
 console.clear();
 
-class User {
-	constructor(firstName, lastName, age) {
-	this.firstName = firstName;
-	this.lastName = lastName;
-	this.age = age;
-}
+// div-01 엘리먼트 앞
+$('.div-01').next(); // 해당 엘리먼트 앞에꺼를 선택하는 태그
+$('.div-01').next('div');
 
-	get age() { // this.age를 불러오는 함수
-		return this._age;
-	}
+// div-01 엘리먼트 뒤
+$('.div-01').prev('');  // 해당 엘리먼트 뒤에꺼를 선택하는 태그
+$('.div-01').prev('div');
 
-	set age(value) { // = age; 값을 불러오는 함수
-		// this.age = value; // 이렇게 쓰면 무한 반복이 되버림.
-		// this._age = value; // _ 붙여주어야 인식은 되나, -1 그대로 읽힘.
-		this._age = value < 0 ? 0 : value; //간단 심플한 작성 방법
-	}
-}
+// div-01 엘리먼트 자식
+$('.div-01 > div');
+$('.div-01 > .div');
+$('.div-01 > #div');
 
-const user1 = new User('Steve', 'Job', -1);  // 스티브, 직업, 나이
+$('.box').children().last().css('background-color','red');
+// box 엘리먼트 자식중에 마지막 엘리먼트
 
-console.log(user1.age); // 나이를 불러오면 원래는 -1이 되나, 0으로 출력됨.
+$('.box > div:nth-child(odd)').css('background-color','blue');
+// box 엘리먼트 자식중에 홀수번째 엘리먼트
 
-// .과 _로 작성해도 인식이 되는 이유는, get, set를 활용했기 때문에 가능한 코드임.
+$('.div-01 > .box').children().eq(0).css('background-color','pink');
+// div-01 엘리먼트 자식중에 첫번째 엘리먼트
+
+$('.box > div:nth-child(even)').css('background-color','yellow');
+// box 엘리먼트 자식중에 짝수번째 엘리먼트
+
+$('.box').find('.날찾아봐').css('background-color','green');
+// box 엘리먼트 자식중에 클래스(날찾아봐) 엘리먼트
+
+$('.날찾아봐').parent('div').parent('.div-01').css('background-color','grey');
+// 자식 입장에서 부모(parent) 엘리먼트 찾아내기(v1)
+
+$('.날찾아봐').closest('.div-01').css('background-color','gold');
+// 자식 입장에서 부모(parent) 엘리먼트 찾아내기(v2)(가장 가까운 상위 요소를 탐색하여 선택기와 일치)
+
+
+
+
