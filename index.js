@@ -1,14 +1,19 @@
-let a = 0;
-const lasta = $('.slides > div').length-1; // 인덱스 번호 선택
+$('#addClassBtn').click(function(){ // addClass 로 추가
+    $('#target').addClass('testClass');
+});
 
-$('.page-nav > div').on('click', function(event){ // 이벤트 타겟 사용 방법
-    
-    const target = $(event.target); // 나 자신 target를 선택해서 index를 선택하겠다.
-    const index = target.index();
-    
-    $('.slides > div').removeClass('active'); // 이미지 사진이 삭제되고 추가되도록
-    $('.slides > div').eq(index).addClass('active'); 
+$('#removeClassBtn').click(function(){ // removeClass 로 삭제
+    $('#target').removeClass('testClass');
+});
 
-    $('.page-nav > div').removeClass('active'); // 하단 원이 삭제되고 추가되도록
-    $('.page-nav > div').eq(index).addClass('active'); // 
-})
+$('#hasClassBtn').click(function(){ // hasClass 로 해당 태그 찾기
+    if($('#target').hasClass('testClass') == true) {
+    alert('textClass 있음');
+    } else if ($('#target').hasClass('testClass') == false) {
+    alert('textClass 없음');
+    }
+});
+
+$('#toggleClassBtn').click(function(){ // 지정한 요소에 클래스 추가
+    $('#target').toggleClass('testClass');
+});
