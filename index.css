@@ -1,49 +1,21 @@
-body {
-    margin:0px;
-    padding:0px;
+html {
+    /* 영문이면 roboto가 적용되고, 한글이면 Noto Sans KR가 적용되도록 아래와 같은 순서로 배치 */
+    font-family: "Roboto", "Noto Sans KR", sans-serif;
   }
   
-  .slider {
-    height:400px;
-    position:relative;
+  /* 노말라이즈 */
+  body, ul, li, h1 {
+    margin:0;
+    padding:0;
+    list-style:none;
   }
   
-  .slider .slides > div {
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background-position:center;
-    background-size:cover;
-    background-repeat:no-repeat;
-    opacity:0;
-    transition : opacity 0.5s;
+  a {
+    color:inherit;
+    text-decoration:none;
   }
-  
-  .active {
-    opacity:1 !important;
-  }
-  
-  .page-nav {
-    display:flex;
-    position:absolute;
-    justify-content:center;
-    bottom:0px;
-    width:100%;
-    margin-bottom:12px;
-  }
-  
-  .page-nav > div {
-    width:14px;
-    height:14px;
-    background-color:#303f9f;
-    border-radius:6px;
-    margin-right:12px;
-    opacity:0.4;
-    cursor:pointer;
-  }
-  
-  .page-nav > .active {
-    background-color : #fff;
-  }
+
+p1, p2{
+  width: 100px;
+  height: 100px;
+}
