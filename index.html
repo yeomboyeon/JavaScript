@@ -6,30 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <h3 id="h3">제이쿼리 선택자 연습</h3>
-  <h3>1. 5개의 상자 색깔을 다 다르게 해주세요</h3>
-  <h3>2. 짝수번째 상자와 홀수번째 상자 색깔을 같게 해주세요</h3>
-  <h3>3. 날찾아줘 글자 색깔을 분홍색으로 바꿔주세요</h3>
-  <h3>4. 날찾아줘 입장에서 부모박스를 파랑색 배경으로 바꿔주세요</h3>
-  <input type="text">
-  <h1></h1>
-  <div id="box-1">
-  <div class="box">
-    <div></div>
-    <div class="parent">
-       <div>
-          <div>
-              <div>
-                <h1>날찾아줘</h1>
+  <div id="chat-room">
+      <div class="message-box" id="style-1">
+          <div class="message-group" data-date-str="2022년 8월 10일 수요일">
+              <div class="chat-message other">
+                  <section><i class="fa fa-user"></i></section>
+                  <span>아들</span>
+                  <div>굿모닝!!!!</div>
               </div>
-        </div>
+              
+              <div class="chat-message mine">
+                  <section><i class="fa fa-user"></i></section>
+                  <span>홍길동</span>
+                  <div>새벽공기가 쌀쌀하구나</div>
+              </div>
+          </div>
+          
+          <div class="message-group" data-date-str="2022년 8월 17일 수요일">
+              <div class="chat-message other">
+                  <section><i class="fa fa-user"></i></section>
+                  <span>아들</span>
+                  <div>굿모닝!!!! 입니다!</div>
+              </div>
+              
+              <div class="chat-message mine">
+                  <section><i class="fa fa-user"></i></section>
+                  <span>홍길동</span>
+                  <div>오늘은 날씨가 좋네~ ㅎㅎ</div>
+              </div>
+              
+          </div>
       </div>
-    </div>
-    <div></div>
-    <div></div>
-    <div></div>
+      <form id="input-form" class="input-box">
+          <input type="text" id="text-input">
+          <div class="btn-plus">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+          <div class="btn-emo">
+              <i class="fa fa-smile-o" aria-hidden="true"></i>
+          </div>
+          <button class="btn-submit">
+              <span>전송</span>
+          </button>
+      </form>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./index.js"></script>
