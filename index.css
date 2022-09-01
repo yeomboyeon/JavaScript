@@ -1,59 +1,59 @@
 /* 노말라이즈 */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-#todo-app {
-  background-color: blueviolet;
-  width: 360px;
-  padding: 12px;
-  margin: 100px auto; /*컨텐츠 가운데 정렬*/
-  box-shadow: 0 0 3px rgb(0 0 0); /*박스 그림자*/
-}
-
-h1,
-h3,
-p,
-span {
-  color: aliceblue;
-}
-
-#todo-app > div {
-  display: flex;
-  justify-content: space-between;
-}
-
-#todo-app > div > h1 {
-  font-weight: 500;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-ul {
-  padding: 12px;
-}
-
-#todo-app > input[type="text"] {
-  font-size: 15px;
-  text-align: center;
-  background-color: chocolate;
-  width: 100%;
-  border: none;
-  outline: none; /*커서 클릭했을 때 박스 라인 없애기*/
-  padding: 13px;
-  color: aliceblue;
-}
-
-#todo-app > div > button {
-  background-color: brown;
-  border: none;
-  outline: none; /*커서 클릭했을 때 박스 라인 없애기*/
-  border-radius: 4px;
-  color: aliceblue;
-  padding: 6px;
-}
+  #todo-app {
+    background-color: blueviolet;
+    width: 360px;
+    padding: 12px;
+    margin: 100px auto; /*컨텐츠 가운데 정렬*/
+    box-shadow: 0 0 3px rgb(0 0 0); /*박스 그림자*/
+  }
+  
+  h1,
+  h3,
+  p,
+  span {
+    color: aliceblue;
+  }
+  
+  #todo-app > form > div{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #todo-app > form > div > h1 {
+    font-weight: 500;
+  }
+  
+  ul,
+  li {
+    list-style: none;
+  }
+  
+  ul {
+    padding: 12px;
+  }
+  
+  #todo-app > input[type="text"] {
+    font-size: 20px;
+    text-align: center;
+    background-color: chocolate;
+    width: 100%;
+    border: none;
+    outline: none; /*커서 클릭했을 때 박스 라인 없애기*/
+    padding: 13px;
+    color: aliceblue;
+  }
+  
+  #todo-app > form > div > button {
+    background-color: brown;
+    border: none;
+    outline: none; /*커서 클릭했을 때 박스 라인 없애기*/
+    border-radius: 4px;
+    color: aliceblue;
+    padding: 6px;
+  }

@@ -6,13 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <div id="todo-app">
       <form id="input-form">
+          <!--form 각각 지정해주지 않으면 아래의 input들과 중복-->
         <div>
           <h1>Todo List</h3>
-          <button type="button">CLEAR</button>
+          <button type="button">CLEAR</button> 
+          <!--type 지정해주지 않으면 아래의 버튼들과 중복-->
         </div>
       <input type="text" placeholder="[Add New Todos]" />
       </form>  
