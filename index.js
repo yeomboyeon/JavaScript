@@ -1,108 +1,94 @@
-/**
- * 구현 Todo List
- *
- * ========== 검색 기능 구현하기 ==========
- * 검색 input 에 event on.keyup 키보드칠 때 마다 실행
- * 타겟 지정, 타겟을 별도 변수로 저장
- * 변수에 찾을 위치의 텍스트 태그를 선택자로 저장
- * event, this .val() 입력 값 가져오기
- * foreach문 찾아야하는 값의 텍스트를 찾도록 반복문 구현
- * show 보이게 하기, hide 감추기
- * todo 내용 가져와 비교하기 - 값이 여러개니 배열로.. length 반복문 돌리기
- *
+/** 입력 기능 구현
+ * document 에서 addEvents 함수 받아오기
+ * addEvents 함수 선언
+ * event 감싸기
+ * 입력한 todo 기록 및 가져오기 input
+ * input 태그에 form 태그로 감싸주기
+ * on. submit. event.preventDault() 새로고침 막기
+ */
+/** CLEAR 기능 구현
+ * ul 태그 자식인 li 전부가 삭제되어야 함
+ * remove는 자신만 삭제 empty 나포함 전체 삭제
+ */
+/** 각 태그별 삭제 기능 구현
+ * 이벤트 타겟 설정
+ * 타겟 받아와서 변수에 저장
+ * 클릭하는 해당 태그만 삭제
+ * deleteEvents 함수 별도 선언
+ * 삭제 remove()
+ * onclick 함수
+ */
+/** 각 태그별 수정 기능 구현
+ * onclick html 태그에 작성
+ * showDateEvents() 함수 선언
+ * 수정 클릭시 해당 태그만 수정
+ * 타겟 설정, 타겟의 형제태그를 변수에 저장
+ * 그 변수의 텍스트를 또다른 변수에 저장
+ * html 변수에 수정되는 값의 텍스트를 저장(input value)
+ * 타겟의 형제의 첫번째 태그 이름을 prop 찾아서 변수에 저장
+ * if 태그이름이 input 이면 리턴
+ * 타겟의 형제 태그 변수의 부모의 첫번째에 html 추가
+ * 타겟의 형제 태그 변수를 지운다.
+ * ---addEvents--- 추가
+ * submit 새로고침 막고
+입력한 값 어딘지 find 찾고
+찾은 값 val 입력받아
+부모, 첫번째 스팬태그에 입력 재입력하고
+기존에 입력된 값 remove 지운다.
  */
 $(document).ready(function () {
   addEvents();
 });
 
-function deleteTodo(event) {
+function deleteEvents(event) {
   const target = $(event.target);
   target.parent().remove();
 }
 
-function showUpdateInput(event) {
-  const nowUpdate =
-    $("#todo-update-form").find("input[type=text]").length === 0 ? false : true;
-
-  if (nowUpdate === true) {
-    $("#todo-update-form").find("input[type=text]").focus();
-    return;
-  }
-
+function showDateEvents(event) {
   const target = $(event.target);
   const todo = target.siblings("span");
   const todoText = todo.text();
-
-  const html = `<input type="text" value='${todoText}' />`;
-
-  const nowTagName = target.siblings().first().prop("tagName");
+  const html = `<input type ="text" value ="${todoText}"/>`;
+  const nowTagName = target.siblings().first().prop("TagName");
 
   if (nowTagName === "INPUT") {
     return;
   }
-
   target.parent().prepend(html);
+
   todo.remove();
 }
 
 function addEvents() {
-  $("#todo-update-form").on("submit", function (event) {
-    event.preventDefault();
-    const updateInput = $("#todo-update-form").find("input[type=text]");
-    const updateTodo = updateInput.val();
-
-    updateInput.parent().prepend(`<span>${updateTodo}</span>`);
-    updateInput.remove();
-  });
-  $("#todo-form").on("submit", function (event) {
+  $("#input-form").on("submit", function (event) {
     event.preventDefault();
 
-    const todo = $("form > input[type=text]").val();
+    const todo = $("#input-form > input[type=text]").val();
 
-    const html = `<li>
-        <span>${todo}</span>
-        <button type="button" onclick="deleteTodo(event);">삭제</button>
-        <button type="button" onclick="showUpdateInput(event)">수정</button>
-    </li>`;
+    let html = `<li>
+    <span> ${todo} </span>
+    <button type="button" onclick="deleteEvents(event)"/>삭제</button>
+    <button type="button" onclick="showDateEvents(event)"/>수정</button></li>`;
 
-    $("form > ul").prepend(html);
+    $("#input-modify-form > ul").prepend(html);
 
-    $("form > input[type=text]").val("");
-
-    // 쿼리스트링(입력한 값 보내주기 : todo 값을)
-    // 127.0.0.1 = localhost
-    $.ajax({
-      url: `http://127.0.0.1:3000/addTodo?todo=${todo}`,
-      params: {
-        todo: todo,
-      },
-      success: function (response) {},
-    });
+    $("#input-form > input[type=text]").val("");
   });
-  $("form > div > button").on("click", function () {
-    $("form > ul").empty();
+
+  $("#input-form > div > button").on("click", function () {
+    $("#input-modify-form > ul > li").empty();
   });
-  $("#search-input").on("keyup", function (event) {
-    const target = $(event.target);
-    const searchText = target.val();
-    const todos = $("#todo-update-form > ul > li"); // 여러개를 가져올 수 있음.
 
-    if (searchText === "") { // 찾은 값이 있다면 그 값만 show 보여주기 그리고 리턴
-      todos.show();
-      return;
-    }
+  $("#input-modify-form").on("submit", function (event) {
+    event.preventDefault(); // submit 새로고침 막고
 
-    // jquery에서의 foreach 반복문
-    // 찾아야하는 값의 텍스트를 찾도록 반복문 구현
-    // 인덱스 번호와 엘리먼트값이 같이 확인되도록 인자값 주기
-    // 찾은 값을 엘리먼트로 제어하기 위함
-    todos.each(function (index, element) {
-      const todo = $(element).children("span").text();
-      // 변수에 찾은 값의 엘리먼트의 동생의 태그 중 span 태그가 가진 텍스트를 저장
+    const updateInput = $("#input-modify-form").find("input[type=text]"); // 입력한 값 어딘지 find 찾고
 
-      if (todo.startsWith(searchText) === false) { // 시작점부터 찾아보기.
-        $(element).hide(); // 선택한 엘리먼트만 삭제
-      }
-    });
+    const updateTodo = updateInput.val(); // 찾은 값 val 입력받아
+
+    updateInput.parent().prepend(`<span>${updateTodo}</span>`); // 부모, 첫번째 스팬태그에 입력 재입력하고
+
+    updateInput.remove(); // 기존에 입력된 값 remove 지운다.
   });
 }
