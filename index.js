@@ -2,48 +2,51 @@
 
 console.clear();
 
-/** 1. 최고, 최저값 찾기 (Sperad operator 이용)
- * Math.max(), Math.min()  */
-const array1 = [1, 2, 3, 4, 5];
-const c = [...array1]; // 배열 문자열로 벗끼기
+/*
+2.  Destructring 문법을 사용해서 아래 객체와 배열을 분해해주세요
+    배열에서는 인자와 값이 1:1 매칭이 되어야만 undefined가 안된다.
+    값이 객체냐, 배열이냐에 따라 변수에 기호를 동일하게 써줘야 한다.
+    객체 기호 : { }
+    배열 기호 : [ ]
+*/
 
-console.log(...array1); // 1 2 3 4 5
+const { name, age, local } = { name: "홍길동", age: 40 };
+// 3번째 인자를 받아줄 객체 값을 넣어주면 indefined 가 바뀜
 
-console.log(c); // (5) [1, 2, 3, 4, 5]
+console.log(name, age, local); // 홍길동 40 undefined
 
-const d = {
-  name: "보연",
-};
-const f = { ...d }; // 객체 감싸기
+const { name: myName, age: myAge } = { name: "홍길동", age: 40 };
+// 변수명을 바로 넣어줌
 
-console.log(f); // {name: '보연'}
+console.log(myName, myAge); // 홍길동 40
 
-const names = "보연";
+const [one, two] = [
+  //const [{name, age}}, {name, age}] = [
+  // 배열 안에서 객체를 또 나눌 수 있다.(실무에서 잘 하지는 않음.)
+  { name: "영수", age: 20 },
+  { name: "영수", age: 20 },
+];
 
-console.log(...names); // 보 연
+console.log(one, two);
+// { name: "영수", age: 20 }, { name: "영수", age: 20 },
 
-function solutionMax(params) {
-  return Math.max(...params);
-}
+const [one1, two2] = [1, 2];
 
-console.log("최고값 :", solutionMax(array1)); // 최고값 : 5
+console.log(one1, two2); // 1 2
 
-function solutionMin(params) {
-  return Math.min(...params);
-}
-console.log("최저값 :", solutionMin(array1)); // 최저값 : 1
+const [one2, , for4] = [1, 2, 3]; // 쉼표만 찍고 요소 무시하기
 
-// 배열 합치기
-// (기존 버전)
-// const arr1 = [1, 2, 3];
-// const arr2 = [4, 5, 6];
+console.log(one2, for4); // 1 3
 
-// const arr = arr1.concat(arr2);
-// console.log(arr); // (6) [1, 2, 3, 4, 5, 6]
+const [name1, name2, ...rest] = [
+  "yeom",
+  "boyeon",
+  "ho",
+  "bong",
+  "jung",
+  "love you",
+]; // ...rest 나머지 요소 가져오기
 
-// (ES6 버전)
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-
-const arr = [...arr1, ...arr2];
-console.log(arr); // (6) [1, 2, 3, 4, 5, 6]
+console.log(name1); // yeom
+console.log(name2); // boyeon
+console.log(...rest); // "ho", "bong", "jung", "love you"
