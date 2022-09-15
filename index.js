@@ -2,51 +2,46 @@
 
 console.clear();
 
-/*
-2.  Destructring 문법을 사용해서 아래 객체와 배열을 분해해주세요
-    배열에서는 인자와 값이 1:1 매칭이 되어야만 undefined가 안된다.
-    값이 객체냐, 배열이냐에 따라 변수에 기호를 동일하게 써줘야 한다.
-    객체 기호 : { }
-    배열 기호 : [ ]
-*/
+// 배열 추가, 삭제
+const a = [1, 2, 3, 4];
 
-const { name, age, local } = { name: "홍길동", age: 40 };
-// 3번째 인자를 받아줄 객체 값을 넣어주면 indefined 가 바뀜
+a.push(5); // 배열 맨뒤에 추가
+console.log(a); // 1,2,3,4,5
 
-console.log(name, age, local); // 홍길동 40 undefined
+a.unshift(0); // 배열 맨앞에 추가
+console.log(a); // 0,1,2,3,4,5
 
-const { name: myName, age: myAge } = { name: "홍길동", age: 40 };
-// 변수명을 바로 넣어줌
+a.pop(); // 배열 맨뒤 삭제
+console.log(a); // 0,1,2,3,4
 
-console.log(myName, myAge); // 홍길동 40
+a.shift(); // 배열 맨앞 삭제
+console.log(a); // 1,2,3,4
 
-const [one, two] = [
-  //const [{name, age}}, {name, age}] = [
-  // 배열 안에서 객체를 또 나눌 수 있다.(실무에서 잘 하지는 않음.)
-  { name: "영수", age: 20 },
-  { name: "영수", age: 20 },
-];
+// delete 삭제
+const man = {
+  name: "보연",
+  age: 20,
+};
 
-console.log(one, two);
-// { name: "영수", age: 20 }, { name: "영수", age: 20 },
+delete man.name;
 
-const [one1, two2] = [1, 2];
+console.log(man); // {age: 20}
 
-console.log(one1, two2); // 1 2
+// Template literals(템플릿 리터럴)
+const myName = "보연";
+console.log(`나의 이름은 ${myName}입니다`); // 나의 이름은 보연입니다
 
-const [one2, , for4] = [1, 2, 3]; // 쉼표만 찍고 요소 무시하기
+// default value: 사전에 정의된 값
+// 디폴트 값 적용 순서 : 좌측에서 우측으로 적용
 
-console.log(one2, for4); // 1 3
+function add(a, b = 10) {
+  // b = 10으로 사전에 값을 정의함
+  return a + b;
+}
 
-const [name1, name2, ...rest] = [
-  "yeom",
-  "boyeon",
-  "ho",
-  "bong",
-  "jung",
-  "love you",
-]; // ...rest 나머지 요소 가져오기
+console.log(add(1));
+// 첫번째 인자 a를 1로 주었고, 뒤에는 값이 없기에
+// b는 그대로 10 해서 결과는 1 + 10 = 11 나옴
 
-console.log(name1); // yeom
-console.log(name2); // boyeon
-console.log(...rest); // "ho", "bong", "jung", "love you"
+const [one, two, five = 50] = [10, 20, 70];
+console.log(five); // 70 우측에 할당된 값이 있다면 사전 정의된 값은 무시
