@@ -1,41 +1,17 @@
 "use strict";
 
 console.clear();
-// ticket 제일 많이, 적게 가진 인원의 ticket 갯수는?
-const user = [
-  {
-    name: "보연",
-    ticket: 38,
-  },
-  {
-    name: "연정",
-    ticket: 37,
-  },
-  {
-    name: "세희",
-    ticket: 4,
-  },
-  {
-    name: "관우",
-    ticket: 2,
-  },
-];
 
-let maxNumber = Number.MIN_SAFE_INTEGER;
-let minNumber = Number.MAX_SAFE_INTEGER;
+// splice(start[, deleteCount[, item1[, item2[, ...]]]])
+// - start : 음수이면 끝에서부터 세기
+// - deleteCount : 배열에서 제거할 요소의 수
+// - item : 배열에 추가할 요소(지정하지 않으면 splice() 요소 제거만 수행)
 
-let ticketMaxNumber = maxNumber;
-let ticketMinNumber = minNumber;
-
-for (let k = 0; k < user.length; k++) {
-  if (maxNumber < user[k].ticket) {
-    maxNumber = user[k].ticket;
-    ticketMaxNumber = user[k].ticket;
-  }
-  if (minNumber > user[k].ticket) {
-    minNumber = user[k].ticket;
-    ticketMinNumber = user[k].ticket;
-  }
-}
-console.log(ticketMaxNumber); // 38
-console.log(ticketMinNumber); // 2
+const fruits = ["수박", "바나나", "망고", "파인애플"];
+// fruits.splice(2, 1);
+// console.log(fruits); // ['수박', '바나나', '파인애플']
+// fruits.splice(2, 2);
+// console.log(fruits); // ['수박', '바나나']
+const removed = fruits.splice(0, 3); // 삭제된 배열 값을 변수로 저장
+console.log(removed); // ['수박', '바나나', '망고']
+console.log(fruits); // ['파인애플']
