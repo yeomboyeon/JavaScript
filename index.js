@@ -2,26 +2,27 @@
 
 console.clear();
 
-/** map(), Math.max() 활용
- * 각 배열 안에서 최대값 출력하기
- * 입력 예제 : [[4,5,1,3][13,27,18,26][32,35,37,39][1000,1001,857,1]]
- * 출력 예제 : [5,27,39,1001]
- */
+// 큰 수 출력
+// n(1<=n<=100) 정수를 입력받고 자신의 바로 앞 수보다 큰 수만 출력
+// 첫번째 수는 무조건 출력
+// 입력 예제 6
+// 7 3 9 5 6 12
+// 출력 예제 7 9 6 12
 
-const arr = [
-  [4, 5, 1, 3],
-  [13, 27, 18, 26],
-  [32, 35, 37, 39],
-  [1000, 1001, 857, 1],
-];
+function sol() {
+  const arr = [7, 3, 9, 5, 6, 12];
+  const newArr = [];
 
-function solutionMax() {
-  const newUser = arr.map((value, index) => {
-    // 배열에서 바꿀 값을 찾는다.
-    return Math.max(...value); // 바꿀 값은 배열에서 가장 큰 값을 찾아서 변수에 저장
-  });
-  console.log(newUser); // 해당 변수를 출력
-  // console.log(Math.max(...value));
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      newArr.push(arr[0]); // 무조건 맨 앞 출력
+    } else {
+      if (arr[i] < arr[i + 1]) {
+        // 앞에 값이랑 비교해서 값보다 크면 넣기
+        newArr.push(arr[i + 1]);
+      }
+    }
+  }
+  return newArr;
 }
-
-solutionMax(); //(4) [5, 27, 39, 1001]
+console.log(sol());
