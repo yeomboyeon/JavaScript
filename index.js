@@ -1,28 +1,19 @@
-"use strict";
-
-console.clear();
-
-// 큰 수 출력
-// n(1<=n<=100) 정수를 입력받고 자신의 바로 앞 수보다 큰 수만 출력
-// 첫번째 수는 무조건 출력
-// 입력 예제 6
-// 7 3 9 5 6 12
-// 출력 예제 7 9 6 12
-
+// 보이는 학생
 function sol() {
-  const arr = [7, 3, 9, 5, 6, 12];
-  const newArr = [];
+  let arr = [130, 135, 148, 140, 145, 150, 150, 153]; // 입력 값
+  let max = arr[0]; // 최대값 입력하도록 배열 변수 저장
+  let cnt = 1; // 카운트 1씩 증가값 변수 저장
 
-  for (let i = 0; i < arr.length; i++) {
-    if (i === 0) {
-      newArr.push(arr[0]); // 무조건 맨 앞 출력
-    } else {
-      if (arr[i] < arr[i + 1]) {
-        // 앞에 값이랑 비교해서 값보다 크면 넣기
-        newArr.push(arr[i + 1]);
-      }
+  for (let i = 1; i < arr.length; i++) {
+    // 입력 값 만큼 반복
+    if (max < arr[i]) {
+      // 배열값이 최대값보다 큰 값을 확인
+      console.log(arr[i]); // 조건에 해당하는 값 확인
+      max = arr[i]; // 최대값에 해당 값 저장
+      cnt++; // 조건 부합된 값을 증가
     }
   }
-  return newArr;
+  return cnt;
 }
-console.log(sol());
+
+console.log(sol()); // 5
