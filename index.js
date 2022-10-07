@@ -2,24 +2,38 @@
 
 console.clear();
 
-// 자연수 n,m 직사각형 형태의 * 만들기
-function sol_1(a, b) {
-  const c = a * b;
+// 자릿수의 합
+// 문자열로 바꿔서 반복문 돌리기
+// 입력예제 : 7
+// 입력예제 : 128 460 603 40 521 137 123
+// 출력예제 : 137
 
-  let 답변 = "\n";
+console.clear();
 
-  for (let i = 1; i <= c; i++) {
-    답변 += "*";
-    if (i % a === 0) {
-      답변 += "\n";
+function solution() {
+  const arr = [128, 460, 603, 40, 521, 137, 123];
+
+  let max = Number.MIN_SAFE_INTEGER;
+
+  let maxIndex = 0;
+
+  arr.forEach((value, index) => {
+    const str = value.toString(); // 숫자를 문자로 바꾸기
+
+    let sum = 0;
+
+    for (let x of str) {
+      // for of 객체랑 문자 반복문 돌릴 때 자주쓰임
+      // console.log(x);
+      sum += Number(x);
     }
-  }
-  return 답변;
+
+    if (sum >= max) {
+      max = sum;
+      maxIndex = index;
+    }
+  });
+  return arr[maxIndex];
 }
 
-console.log(sol_1(5, 3));
-/**"
-*****
-*****
-*****
-" */
+console.log(solution());
