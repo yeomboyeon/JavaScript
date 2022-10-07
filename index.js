@@ -1,15 +1,25 @@
-// 문자열 짝수일 때 가운데 두 글자, 홀수일 때 한 글자
-function sol_1(s) {
-  let answer = ""; // 빈값 저장
+"use strict";
 
-  if (s.length % 2 == 0) {
-    // 짝수 2로 나누었을 때 나머지가 0 이면
-    answer = s[s.length / 2 - 1] + s[s.length / 2]; //
-  } else {
-    // 홀수
-    answer = s[Math.floor(s.length / 2)]; // 소수점 버리기
+console.clear();
+
+// 자연수 n,m 직사각형 형태의 * 만들기
+function sol_1(a, b) {
+  const c = a * b;
+
+  let 답변 = "\n";
+
+  for (let i = 1; i <= c; i++) {
+    답변 += "*";
+    if (i % a === 0) {
+      답변 += "\n";
+    }
   }
-  return answer;
+  return 답변;
 }
-let s = "abcde";
-console.log(sol_1(s));
+
+console.log(sol_1(5, 3));
+/**"
+*****
+*****
+*****
+" */
